@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Coin from "./Coin";
-import { useParams } from "react-router";
+
+
 const Home = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const { id } = useParams();
-  console.log(id);
+
+  console.log("coins :", coins)
+
   useEffect(() => {
     axios
       .get(
@@ -23,8 +25,8 @@ const Home = () => {
   const filterdCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLocaleLowerCase())
   );
+
   return (
-    <a href="/coindetail/:id">
       <div className="flex flex-col items-center justify-center">
         <div className="flex flex-col justify-cente items-center">
           <h1 className="my-5 text-xl">Search a currency</h1>
@@ -44,7 +46,6 @@ const Home = () => {
           })}
         </div>
       </div>
-    </a>
   );
 };
 

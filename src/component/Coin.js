@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 //
 
@@ -10,16 +10,16 @@ const Coin = ({
   current_price: price,
   market_cap: marketcap,
   price_change_percentage_24h: pricechange,
-  total_volume: volume,
+  total_volume: volume,id
 }) => {
-  const { id } = useParams();
+
   return (
     <div className="border-b-2 my-4 bg-blue-100 ">
       <div className="flex flex-row items-center justify-around	  ">
-        <Link to={`coindetail/${id}`}>
+        <NavLink to={`/coindetail/${id}`}>
           {" "}
           <img src={image} alt="crypto" className="w-10 h-10 " />
-        </Link>
+        </NavLink>
         <h1 className="m-5">{name}</h1>
         <p>{symbol}</p>
         <p>${price}</p>
