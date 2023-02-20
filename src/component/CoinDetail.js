@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CoinDetail = () => {
   const [detail, setDetail] = useState({});
@@ -27,25 +28,28 @@ const CoinDetail = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-black text-red-100 ">
       <div className="w-1/2 my-20">
-        <div className="border-gray-100 border-2 p-5 w-full text-center text-3xl">
+        <div className="text-center font-bold m-10 text-5xl">
+          <Link to="/">Currency Coin</Link>
+        </div>
+        <div className="border-gray-100 border-2 p-3 w-full text-center text-3xl">
           <h1>{detail.name}</h1>
         </div>
-        <div className="border-gray-100 border-2 p-5 w-full text-center text-3xl my-10">
+        <div className="border-gray-100 border-2 p-3 w-full text-center text-3xl my-10">
           <div>
-            <div className="relative right-80 bottom-5">
-              <span className="bg-fuchsia-900 p-1 rounded-lg text-base">
+            {/* <div className="relative right-80 bottom-3">
+              <span className="bg-red-900 p-1 rounded-lg text-base">
                 Rank # {detail.market_cap_rank}
               </span>
-            </div>
+            </div> */}
             <div className="flex justify-between">
-              <div className="flex flex-row items-center m">
+              <div className="flex flex-row items-center ">
                 {detail.image ? (
                   <img src={detail.image.small} alt="" className="w-50" />
                 ) : null}
                 <p className="text-lg ml-5">{detail.name}</p>
                 <p className="text-lg ml-3">[{detail.symbol}]</p>
               </div>
-              <div className="relative right-20">
+              <div className="relative right-20 font-bold">
                 {detail.market_data?.current_price ? (
                   <p>${detail.market_data.current_price.usd}</p>
                 ) : null}
@@ -132,19 +136,19 @@ const CoinDetail = () => {
           </tbody>
         </table>
       </div>
-      <div>
-        <div className="">
+      <div className="w-1/3">
+        <div>
           <div>
-            <div className="flex justify-between w-80 border-b-2 p-2">
-              <h4>24 Hour Low</h4>
+            <div className="flex justify-between  border-b-2 p-2">
+              <h4 className="font-bold">24 Hour Low</h4>
               {detail.market_data?.high_24h ? (
-                <p>{detail.market_data.low_24h.usd}</p>
+                <p className="font-bold">{detail.market_data.low_24h.usd}</p>
               ) : null}
             </div>
-            <div className="flex justify-between w-80 border-b-2 p-2">
-              <h4>24 Hour High</h4>
+            <div className="flex justify-between w-110 border-b-2 p-2">
+              <h4 className="font-bold">24 Hour High</h4>
               {detail.market_data?.high_24h ? (
-                <p>{detail.market_data.high_24h.usd}</p>
+                <p className="font-bold">{detail.market_data.high_24h.usd}</p>
               ) : null}{" "}
             </div>
           </div>
@@ -152,23 +156,23 @@ const CoinDetail = () => {
         <div className="w-full">
           <div className="">
             <div className="flex justify-between  border-b-2 p-2 ">
-              <h4>Market Cap</h4>
+              <h4 className="font-bold">Market Cap</h4>
               {detail.market_data?.market_cap ? (
-                <p>{detail.market_data.market_cap.usd}</p>
+                <p className="font-bold">{detail.market_data.market_cap.usd}</p>
               ) : null}
             </div>
-            <div className="flex justify-between w-80 border-b-2 p-2 ">
+            {/* <div className="flex justify-between w-80 border-b-2 p-2 ">
               <h4>Circulating Supply</h4>
               {detail.market_data?.market_cap ? (
                 <p>{detail.market_data.circulating_supply.usd}</p>
               ) : null}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
       <div className="w-full">
-        <div className="p-5">
-          <h3 className="my-2">About</h3>
+        <div className="p-8">
+          <h3 className="my-2 font-bold text-lg">About</h3>
           <p>{detail.description ? detail.description.en : null}</p>
         </div>
       </div>

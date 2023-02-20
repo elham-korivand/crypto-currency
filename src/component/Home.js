@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Coin from "./Coin";
 
-
 const Home = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
 
-  console.log("coins :", coins)
+  console.log("coins :", coins);
 
   useEffect(() => {
     axios
@@ -27,25 +26,25 @@ const Home = () => {
   );
 
   return (
-      <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-col justify-cente items-center">
-          <h1 className="my-5 text-xl">Search a currency</h1>
-          <form>
-            <input
-              onChange={handleChange}
-              type="text"
-              name="search"
-              placeholder="search..."
-              className=" p-2 border-2 border-blue-400 rounded-lg w-96 "
-            />
-          </form>
-        </div>
-        <div className="w-full flex flex-col justify-between">
-          {filterdCoins.map((coin) => {
-            return <Coin key={coin.id} {...coin} />;
-          })}
-        </div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="my-5 text-xl text-white">Search a currency</h1>
+        <form>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="search"
+            placeholder="search..."
+            className=" p-2 border-2 border-blue-400 rounded-lg w-96 "
+          />
+        </form>
       </div>
+      <div className="w-full flex flex-col justify-between">
+        {filterdCoins.map((coin) => {
+          return <Coin key={coin.id} {...coin} />;
+        })}
+      </div>
+    </div>
   );
 };
 
